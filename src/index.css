@@ -34,39 +34,28 @@ body {
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.ant-select-dropdown .rc-virtual-list-holder > div:first-child {
+  overflow-x: auto !important;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.ant-select-dropdown .rc-virtual-list-holder-inner {
+  overflow-x: auto !important;
+  /* max-width: 700px; */
+  width: 200px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* .ant-select-dropdown-menu {
+  overflow-x: auto;
+  max-width: 100%;
+  white-space: nowrap;
+} */
+
+.ant-select-item-option-content {
+  min-width: 700px;
 }
+
+/* .ant-select-item-option-content {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: normal !important;
+} */
