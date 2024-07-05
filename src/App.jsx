@@ -1,35 +1,15 @@
 import { AutoComplete, Button, DatePicker, Space, version } from "antd";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const options = [
     {
       title: "",
-      value: "Downing Street",
+      value: "orange",
     },
   ];
 
-  // for (let index = 0; index < 20; index++) {
-  //   if (index % 2 === 0) {
-  //     options.push({
-  //       title: "",
-  //       value: "Downing Street",
-  //     });
-  //   } else {
-  //     options.push({
-  //       title: "",
-  //       value:
-  //         "Downing Street bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-  //     });
-  //   }
-  // }
-
-  // for (let index = 0; index < 20; index++) {
-  //   options.push({
-  //     title: "",
-  //     value: "Downing Street",
-  //   });
-  // }
+  const dropdownContainerRef = useRef(null);
 
   for (let index = 0; index < 20; index++) {
     options.push({
@@ -37,6 +17,33 @@ function App() {
       value: "Downing Street bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     });
   }
+
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    console.log("xxx custom dropdown", dropdownContainerRef);
+    if (dropdownContainerRef.current) {
+      const allItems =
+        dropdownContainerRef.current.querySelectorAll(".ant-select-item");
+
+      const holderInner = dropdownContainerRef.current.querySelector(
+        ".rc-virtual-list-holder-inner"
+      );
+      const listHolder = dropdownContainerRef.current.querySelector(
+        ".rc-virtual-list-holder > div:first-child"
+      );
+
+      if (holderInner) {
+        const isOverflowing = holderInner.scrollWidth > holderInner.clientWidth;
+        if (isOverflowing) {
+          listHolder.style.width = holderInner.scrollWidth + "px";
+        } else {
+          listHolder.style.overflowX = "hidden";
+          listHolder.style.removeProperty("width");
+        }
+      }
+    }
+  }, [dropdownContainerRef, value]);
 
   return (
     <div className="w-full pl-20">
@@ -51,6 +58,17 @@ function App() {
         }
         popupMatchSelectWidth={true}
         notFoundContent={<div>Not content</div>}
+        open={true}
+        onChange={(value) => setValue(value)}
+        value={value}
+        dropdownRender={(item) => {
+          // console.log('xxx dropdown render', item);
+          return (
+            <div className="fuzzy-dropdownwrapper" ref={dropdownContainerRef}>
+              {item}
+            </div>
+          );
+        }}
       />
     </div>
   );
