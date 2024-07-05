@@ -5,19 +5,37 @@ function App() {
   const options = [
     {
       title: "",
-      value: "Downing Street bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      value: "Downing Street",
     },
   ];
 
-  for (let index = 0; index < 30; index++) {
+  // for (let index = 0; index < 20; index++) {
+  //   if (index % 2 === 0) {
+  //     options.push({
+  //       title: "",
+  //       value: "Downing Street",
+  //     });
+  //   } else {
+  //     options.push({
+  //       title: "",
+  //       value:
+  //         "Downing Street bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  //     });
+  //   }
+  // }
+
+  // for (let index = 0; index < 20; index++) {
+  //   options.push({
+  //     title: "",
+  //     value: "Downing Street",
+  //   });
+  // }
+
+  for (let index = 0; index < 20; index++) {
     options.push({
       title: "",
-      value: "Downing Street",
+      value: "Downing Street bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
     });
-  }
-
-  for (let index = 0; index < 30; index++) {
-    options.push(options[0]);
   }
 
   return (
